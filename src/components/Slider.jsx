@@ -30,21 +30,39 @@ const Arrow = styled.div`
     margin: auto;
     cursor: pointer;
     opacity: 0.5;
+    z-index: 1;
 `
 
 const Slide = styled.div`
     ${'' /* width: 100%; */}
+    position: relative;
 `
 const ImgContainer = styled.div`
-    ${'' /* width: 100%; */}
+    width: 100%;
     
 `
 const Image = styled.img`
-    ${'' /* width: 100%; */}
-    ${'' /* height: 100%; */}
+    width: 100%;
+    height: 100%;
 `
 const InfoContainer = styled.div`
-    
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+`
+
+const Title = styled.h2`
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 6px;
+    word-spacing: 5px;
+    padding-bottom: 5px;
+`
+const SubTitle = styled.p`
+    font-size: 16px;
+    word-spacing: 4px;
+   
 `
 
 export default function Slider() {
@@ -59,7 +77,10 @@ export default function Slider() {
                         <ImgContainer>
                             <Image src="https://images.unsplash.com/photo-1535294379103-d629272eee40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80" />
                         </ImgContainer>
-                        <InfoContainer></InfoContainer>
+                        <InfoContainer>
+                            <Title>EVOLVING COLOURS</Title>
+                            <SubTitle>New Season Evade and Evolve</SubTitle>
+                        </InfoContainer>
                     </Slide>
                 </Wrapper>
                 <Arrow direction="right">
