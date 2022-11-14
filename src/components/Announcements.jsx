@@ -11,7 +11,7 @@ const Container = styled.div`
   align-items: center;
   font-size: 14px;
   padding: 0 5px;
-  box-shadow: 0px 3px 10px rgba(22, 22, 22, 0.5);
+  box-shadow: 0px 3px 7px rgba(22, 22, 22, 0.4);
 `
 
 const AnnouncementsText = styled.div`
@@ -24,15 +24,30 @@ const AnnouncementsText = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
+`
+
+const TextUnderline = styled.a`
+  text-decoration: underline;
+  color: white;
+  margin: 0 7px;
+  cursor: pointer;
 `
 
 export default function Announcements() {
+
   return (
     <Container>
       <AnnouncementsText>
-        Shop Bundles, Save 15%. Man Woman
+        Shop Bundles, Save 15%.
+        <TextUnderline>
+          Men
+        </TextUnderline>
+        <TextUnderline>
+          Women
+        </TextUnderline>
       </AnnouncementsText>
-      <ButtonContainer>
+      <ButtonContainer >
         <ClearOutlined />
       </ButtonContainer>
 

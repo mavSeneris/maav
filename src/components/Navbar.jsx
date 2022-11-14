@@ -1,6 +1,5 @@
 import { Badge } from '@material-ui/core'
 import { LocalMallOutlined, PersonOutlineOutlined, Search } from '@material-ui/icons'
-import React from 'react'
 import styled from 'styled-components'
 
 
@@ -24,6 +23,7 @@ const Category = styled.div`
     justify-content: flex-start;
     align-items: center;
     gap:15px;
+    font-size: 14px;
 `
 
 const CategoryLink = styled.a`
@@ -41,6 +41,7 @@ const Logo = styled.h1`
     font-style: italic;
     align-items: center;
     letter-spacing: 5px;
+    cursor: pointer;
 `
 //* END
 
@@ -65,6 +66,9 @@ const MenuItem = styled.div`
 //* END
 
 export default function Navbar() {
+    
+
+
     return (
         <Container>
             <Wrapper>
@@ -72,6 +76,8 @@ export default function Navbar() {
                     <Category>
                         <CategoryLink>Men</CategoryLink>
                         <CategoryLink>Women</CategoryLink>
+                        <CategoryLink>Accesories</CategoryLink>
+                        <CategoryLink>Stories</CategoryLink>
                     </Category>
                 </Left>
                 <Center>
@@ -83,7 +89,7 @@ export default function Navbar() {
                         <Search />
                         <PersonOutlineOutlined/>
                         <Badge overlap="rectangular" badgeContent={4} color="primary">
-                            <LocalMallOutlined color="action" />
+                            <LocalMallOutlined />
                         </Badge>
                     </MenuItem>
                 </Right>
