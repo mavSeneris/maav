@@ -52,9 +52,9 @@ const InfoContainer = styled.div`
 `
 
 const Title = styled.h2`
-    font-size: 30px;
+    font-size: 40px;
     font-style: italic;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 6px;
     word-spacing: 5px;
     padding-bottom: 5px;
@@ -63,6 +63,15 @@ const SubTitle = styled.p`
     font-size: 16px;
     word-spacing: 4px;
    
+`
+
+const Button = styled.button `
+    font-size: 20px;
+    border: none;
+    outline: None;
+    margin: 10px 0;
+    background-color: transparent;
+    cursor: pointer;
 `
 
 export default function Slider() {
@@ -80,6 +89,7 @@ export default function Slider() {
                         <InfoContainer>
                             <Title>EVOLVING COLOURS</Title>
                             <SubTitle>New Season Evade and Evolve</SubTitle>
+                            <Button>SHOP NOW</Button>
                         </InfoContainer>
                     </Slide>
                 </Wrapper>
