@@ -1,5 +1,6 @@
 import { ClearOutlined } from "@material-ui/icons"
 import styled from "styled-components"
+import { useState } from "react"
 
 
 const Container = styled.div`
@@ -36,8 +37,18 @@ const TextUnderline = styled.a`
 
 export default function Announcements() {
 
+  const [show, setShow] = useState(true)
+
+  function toggleAnnouncement(){
+    setShow(prevShow => !prevShow)
+  }
+
+  const styles = {
+    display: show? "flex" : "none"
+  }
+
   return (
-    <Container>
+    <Container style={styles}>
       <AnnouncementsText>
         Shop Bundles, Save 15%.
         <TextUnderline>
@@ -47,7 +58,7 @@ export default function Announcements() {
           Women
         </TextUnderline>
       </AnnouncementsText>
-      <ButtonContainer >
+      <ButtonContainer onClick={toggleAnnouncement}>
         <ClearOutlined />
       </ButtonContainer>
 
