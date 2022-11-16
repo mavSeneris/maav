@@ -7,9 +7,7 @@ import { useState } from 'react'
 const Container = styled.div`
     height: max-content;
     position: sticky;
-    top: 0;
-    z-index: 1;
-    background-color: white;
+    
 `
 const Wrapper = styled.div`
     
@@ -116,14 +114,25 @@ const ButtonContainer = styled.button`
 
 export default function Navbar() {
     const [showSearch, setShowSearch] = useState(false)
+    const [searchValue, setSearchValue] = useState("")
 
     function toggleSearch() {
         setShowSearch(prevShow => !prevShow)
     }
 
-    const hideSearch = {
-        display: showSearch ? "none" : "block"
+    function handleChange(event) {
+        const { value } = event.target
+        setSearchValue(value)
     }
+
+    function clearSearchVal(){
+        setSearchValue(prevValue => prevValue = "")
+    }
+
+    const handleKeyDown = event => {
+        const { value } = event.target
+        event.key === "Enter" && console.log(value) && setSearchValue(value);
+      };
 
 
     return (
@@ -154,9 +163,17 @@ export default function Navbar() {
                     </MenuItem>
                 </Right>
             </Wrapper>
-            {showSearch && <InputWrapper>
-                <Input type="text" placeholder='What are you looking for?'></Input>
-                <ButtonContainer>
+            {showSearch && <InputWrapper >
+                <Input
+                    type="text"
+                    placeholder='What are you looking for?'
+                    onChange={handleChange}
+                    onKeyDown={handleKeyDown}
+                    name="firstName"
+                    value={searchValue}
+                >
+                </Input>
+                <ButtonContainer onClick={clearSearchVal}>
                     <Clear fontSize="small" />
                 </ButtonContainer>
             </InputWrapper>}
