@@ -1,10 +1,11 @@
 import { Badge } from '@material-ui/core'
-import { LocalMallOutlined, PersonOutlineOutlined, Search } from '@material-ui/icons'
+import { Clear, LocalMallOutlined, PersonOutlineOutlined, Search } from '@material-ui/icons'
 import styled from 'styled-components'
+import { useState } from 'react'
 
 
 const Container = styled.div`
-    height: 60px;
+    height: max-content;
     
 `
 const Wrapper = styled.div`
@@ -12,6 +13,7 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
 `
 
 //* NAVBAR LEFT:
@@ -55,6 +57,14 @@ const Language = styled.span`
     font-size: 14px;
     cursor: pointer;
 `
+
+const ButtonSearch = styled.button`
+    background-color: transparent;
+    border:none;
+    outline: none;
+    cursor: pointer;
+`
+
 const MenuItem = styled.div`
     font-size: 14px;
     cursor: pointer;
@@ -63,10 +73,53 @@ const MenuItem = styled.div`
     gap: 15px;
 `
 
+const InputWrapper = styled.div`
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e6e6e4;
+    width: 100%;
+    height: 60px;
+    z-index: 2;
+    
+`
+
+const Input = styled.input`
+    z-index: 2;
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    ${'' /* font-weight: 400; */}
+    fomt-family: 'Urban', san-serif;
+    color: #303030;
+    background-color: #e6e6e4;
+    border: none;
+    outline: none;
+`
+
+const ButtonContainer = styled.button`
+    width: max-content;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+`
 //* END
 
 export default function Navbar() {
-    
+    const [showSearch, setShowSearch] = useState(false)
+
+    function toggleSearch() {
+        setShowSearch(prevShow => !prevShow)
+    }
+
+    const hideSearch = {
+        display: showSearch ? "none" : "block"
+    }
 
 
     return (
@@ -86,14 +139,23 @@ export default function Navbar() {
                 <Right>
                     <MenuItem>
                         <Language>EN</Language>
-                        <Search />
-                        <PersonOutlineOutlined/>
+                        <ButtonSearch onClick={toggleSearch}>
+                            {!showSearch && <Search />}
+                            {showSearch && <Clear />}
+                        </ButtonSearch>
+                        <PersonOutlineOutlined />
                         <Badge overlap="rectangular" badgeContent={4} color="primary">
                             <LocalMallOutlined />
                         </Badge>
                     </MenuItem>
                 </Right>
             </Wrapper>
+            {showSearch && <InputWrapper>
+                <Input type="text" placeholder='What are you looking for?'></Input>
+                <ButtonContainer>
+                    <Clear fontSize="small" />
+                </ButtonContainer>
+            </InputWrapper>}
         </Container>
     )
 }
