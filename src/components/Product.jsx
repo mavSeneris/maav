@@ -2,12 +2,30 @@ import { FavoriteBorderOutlined, LocalMallOutlined, Search } from '@material-ui/
 import React from 'react'
 import styled from 'styled-components'
 
+const Info = styled.div`
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        gap: 15px;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        background-color: rgba(0,0,0, 0.2);
+        transition: all 0.5s ease;
+    `
+
 const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
+
+    &:hover ${Info}{
+        opacity: 1
+    }
 `
 
     const Circle = styled.div`
@@ -25,14 +43,7 @@ const Container = styled.div`
         ${'' /* z-index: 2; */}
     `
 
-    const Info = styled.div`
-        display: flex;
-        gap: 15px;
-        position: absolute;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-    `
+    
 
     const Icon = styled.div`
         background-color: white;
@@ -42,6 +53,11 @@ const Container = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &:hover {
+            background-color: #e9f5f5;
+            transform: scale(1.1)
+        }
     `
 
 
