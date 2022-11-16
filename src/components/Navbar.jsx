@@ -6,9 +6,13 @@ import { useState } from 'react'
 
 const Container = styled.div`
     height: max-content;
-    
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: white;
 `
 const Wrapper = styled.div`
+    
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
