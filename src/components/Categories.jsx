@@ -5,6 +5,7 @@ import { categories } from "../data"
 const Container = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 6px 0;
     gap: 10px;
     padding:0 10px

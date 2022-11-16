@@ -6,6 +6,7 @@ const Container = styled.div`
     height: 60vh;
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-item: center;
 `
@@ -17,12 +18,12 @@ const Image = styled.img`
 `
 
 const InfoContainer = styled.div`
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 370px;
 `
 
 const Title = styled.h1`
