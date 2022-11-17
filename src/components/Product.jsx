@@ -28,43 +28,32 @@ const Container = styled.div`
     }
 `
 
-    const Circle = styled.div`
-        ${'' /* width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        background-color: transparent;
-        position: absolute; */}
-    `
+const Image = styled.img`
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    ${'' /* z-index: 2; */}
+`
 
-    const Image = styled.img`
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
-        ${'' /* z-index: 2; */}
-    `
+const Icon = styled.div`
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    
-
-    const Icon = styled.div`
-        background-color: white;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        &:hover {
-            background-color: #e9f5f5;
-            transform: scale(1.1)
-        }
-    `
+    &:hover {
+        background-color: #e9f5f5;
+        transform: scale(1.1)
+    }
+`
 
 
 export default function Product({ item }) {
     return (
         <Container>
-            <Circle />
             <Image src={item.img} />
             <Info>
                 <Icon>
