@@ -8,7 +8,6 @@ const Container = styled.div`
 `
 const InputWrapper = styled.div`
     width: 50%;
-    
     background-color: #e88a75;
     display: flex;
     flex-direction: column;
