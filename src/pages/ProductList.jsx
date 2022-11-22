@@ -2,7 +2,6 @@ import Announcement from "../components/Announcements"
 import styled from "styled-components"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
-import Products from "../components/Products"
 import Collections from "../components/Collections"
 
 const Container = styled.div`
@@ -71,7 +70,6 @@ export default function ProductList() {
                     </Select>
                 </Filter>
             </FilterContainer>
-            {/* <Products /> */}
             <Collections/>
             <Footer />
         </Container>

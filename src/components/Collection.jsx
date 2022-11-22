@@ -8,16 +8,6 @@ const CollectionContainer = styled.div`
     
 `
 
-const InfoWrapper = styled.div`
-    position: absolute;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    bottom: 10px;
-    font-size: 13px;
-    padding: 10px;
-`
-
 const ImageWrapper = styled.div`
     position: relative;
 `
@@ -37,6 +27,16 @@ const ImageHover = styled.img`
     }
 `
 
+const InfoWrapper = styled.div`
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    bottom: 10px;
+    font-size: 13px;
+    padding: 10px;
+    opacity: 1;
+`
 
 
 const Title = styled.div``
