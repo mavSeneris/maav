@@ -180,14 +180,10 @@ export default function Navbar() {
     const [showLogin, setShowLogin] = useState(false)
     const [showBag, setShowBag] = useState(false)
 
-
     function toggleSearch() {
         setShowSearch(prevShow => !prevShow)
         setShowLogin(false)
         setShowBag(false)
-
-        
-
     }
 
     function handleChange(event) {

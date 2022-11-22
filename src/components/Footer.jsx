@@ -8,6 +8,7 @@ const Container = styled.div`
     gap: 100px;
     background-color: #141f39;
     flex-wrap: no-wrap;
+    height: 100%;
 `
 
 const Wrapper = styled.div`
