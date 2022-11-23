@@ -11,9 +11,7 @@ const Container = styled.div`
     z-index: 3;
     background-color: white;
     opacity: 0.97;
-    box-shadow: 0 1px 5px rgba(150, 150, 150, 0.4);
-    ${'' /* display: flex;
-    flex-direction: column; */}
+    ${'' /* box-shadow: 0 1px 10px rgba(160, 160, 160, 0.1); */}
 `
 const Wrapper = styled.div`
     
