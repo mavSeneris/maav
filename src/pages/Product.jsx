@@ -90,10 +90,10 @@ const Size = styled.span`
 
 const ProductBtn = styled.button`
     width: 100%;
-    height: 50px;
+    height: 45px;
     background-color: black;
     color: white;
-    font-size: 18px;
+    font-size: 14px;
     border-radius: 25px;
     cursor: pointer;
     border: 1px solid black;
