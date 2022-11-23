@@ -29,14 +29,14 @@ const InfoContainer = styled.div`
     
 `
 const InfoWrapper = styled.div`
-    padding: 0 210px;
+    padding: 0 100px;
     display: flex;
     flex-direction: column;
     gap: 20px;
     width: 100%;
-    min-width: 700px;
+    min-width: 400px;
     min-height: 1000px;
-    max-width: 800px;
+    max-width: 600px;
     margin-bottom: 40px;
 
 `
@@ -90,7 +90,7 @@ const Size = styled.span`
 
 const ProductBtn = styled.button`
     width: 100%;
-    height: 45px;
+    height: 55px;
     background-color: black;
     color: white;
     font-size: 14px;
@@ -134,7 +134,7 @@ const ProductInfoPara = styled.p`
 const ReviewContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 `
 
 
