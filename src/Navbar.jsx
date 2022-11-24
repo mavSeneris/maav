@@ -1,5 +1,5 @@
 import { Badge } from '@material-ui/core'
-import { ArrowBack, Clear, LocalMallOutlined, PersonOutlineOutlined, Search } from '@material-ui/icons'
+import { Clear, LocalMallOutlined, PersonOutlineOutlined, Search } from '@material-ui/icons'
 import styled from 'styled-components'
 import { useState } from 'react'
 
@@ -11,8 +11,7 @@ const Container = styled.div`
     z-index: 3;
     background-color: white;
     opacity: 0.97;
-    box-shadow: 0 1px 10px rgba(160, 160, 160, 0.1);
-
+    ${'' /* box-shadow: 0 1px 10px rgba(160, 160, 160, 0.1); */}
 `
 const Wrapper = styled.div`
     
@@ -118,13 +117,12 @@ const ButtonContainer = styled.button`
 //* END
 
 const LoginWrapper = styled.div`
-    width: 400px;
+    width: 27%;
     height: 100vh;
-    padding: 20px;
     background-color: white;
     position: absolute;
     right: 0px;
-    transition: 0.5s;
+    ${'' /* transition: 0.5s; */}
 `
 
 const Title = styled.h3`
@@ -213,58 +211,6 @@ export default function Navbar() {
         event.key === "Enter" && console.log(value) && setSearchValue(value);
     };
 
-    const Form = styled.form`
-        border-top: 1px solid #d0d0d0;
-        padding: 60px 20px 0 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-    `
-    const Header = styled.h3`
-        font-size: 30px;
-        padding: 0 20px;
-        margin: 30px 0 10px 0;
-    `
-
-    const SubTitle = styled.div`
-        padding: 0 20px;
-        margin-bottom: 60px;
-        font-size: 14px;
-    `
-    const Label = styled.label`
-        font-size: 14px;
-    `
-    const Input = styled.input`
-        width: 100%;
-        height: 42px;
-        border-radius: 25px;
-        cursor: pointer;
-        border: 1px solid black;
-        outline: none;
-        background-color: white;
-        padding: 20px;
-        font-size: 14px;
-        `
-    const Agreement = styled.p`
-        font-size: 16px;
-        margin: 10px 0;
-    `
-    const Button = styled.button`
-        width: 100%;
-        height: 42px;
-        border-radius: 25px;
-        cursor: pointer;
-        border: 1px solid black;
-        outline: none;
-        background-color: black;
-        color: white;
-
-        &:hover {
-        background-color: #191919;
-    `
-
-
 
 
     return (
@@ -310,34 +256,14 @@ export default function Navbar() {
                 </ButtonContainer>
             </InputWrapper>}
 
-            {/* {showLogin && !showSearch && <LoginWrapper>
+            {showLogin && !showSearch && <LoginWrapper>
                 <Title>MAAV Profile</Title>
                 <Desc>Build your unique profile for faster checkout, see full order history, save riding preferences and get access to special offers, before the rest of the pack.</Desc>
                 <LoginFlexContainer>
                     <Email placeholder='email@example.com' />
                     <Button>Get Started</Button>
                 </LoginFlexContainer>
-            </LoginWrapper>} */}
-
-            {showLogin && !showSearch && <LoginWrapper>
-                <ArrowBack fontSize='large'/>
-                <Header>One Last Step!</Header>
-                <SubTitle>Sit tight - just two minutes until your account is ready to go</SubTitle>
-                <Form>
-                    <Label>Email</Label>
-                    <Input placeholder='email@example.com' />
-                    <Label>First Name</Label>
-                    <Input placeholder='First Name' />
-                    <Label>Last Name</Label>
-                    <Input placeholder='Last Name' />
-                    <Agreement>
-                        By registering, I agree to the MAAV Terms & Conditions and Privacy Policy
-                    </Agreement>
-                    <Button>Creat Profile</Button>
-                </Form>
             </LoginWrapper>}
-
-
             {showBag && !showSearch && <ShoppingBagWrapper>
                 <Title>Shopping Bag (0 items)</Title>
                 <Desc>Your Cart is currently empty.</Desc>
