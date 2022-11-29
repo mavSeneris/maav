@@ -18,7 +18,7 @@ const InputWrapper = styled.div`
     gap: 15px;
     color: white;
     padding: 50px 0;
-    max-width: 500px;
+    max-width: 600px;
 `
 const Title = styled.h2`
     font-size: 60px;

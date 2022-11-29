@@ -4,21 +4,23 @@ import styled from 'styled-components'
 import { mobile } from '../../responsive'
 
 const Container = styled.div`
-    padding: 100px;
+    padding: 70px 50px;
     display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 100px;
     background-color: #141f39;
     flex-wrap: no-wrap;
     height: 100%;
 
     ${mobile({
-        flexDirection: "column",
-        gap: "30px;"
+        gridTemplateColumns: "repeat(1, 1fr)",
+        gap: "30px"
     })}
 `
 
 const Wrapper = styled.div`
-    width: 500px;
+    ${'' /* width: 500px; */}
     display: flex;
     flex-direction: column;
     color: white;
@@ -46,15 +48,18 @@ const Icon = styled.div`
 
 const Logo = styled.h1`
     width: 50%;
-    justify-self: flex-end;
+    ${'' /* justify-self: flex-end; */}
     font-size: 100px;
     color: white;
     font-weight: 700;
     letter-spacing: 20px;
     font-style: italic;
-    text-align: right;
+    ${'' /* text-align: right; */}
 
-    ${mobile({fontSize: "50px"})}    
+    @media only screen and (max-width: 1050px){
+            ${{gridColumn: "2 / 1", fontSize: "40px"}}
+        }
+      
 `
 
 
