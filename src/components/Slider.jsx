@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import { mobile } from '../../responsive'
+
 
 
 const Container = styled.div`
@@ -18,7 +20,8 @@ const ImgContainer = styled.div`
 `
 const Image = styled.img`
     width: 100%;
-    height: 100%;
+    min-height: 500px;
+    object-fit: cover;
 `
 const InfoContainer = styled.div`
     position: absolute;
@@ -26,6 +29,7 @@ const InfoContainer = styled.div`
     left: 20px;
     color: white;
     text-shadow: 0 1px 12px rgb(22,22,22, 0.2)
+
 `
 
 const Title = styled.h2`
@@ -35,13 +39,16 @@ const Title = styled.h2`
     letter-spacing: 6px;
     word-spacing: 5px;
     padding-bottom: 5px;
+
+    ${mobile({fontSize: "30px",})}
+
 `
 const SubTitle = styled.p`
     font-size: 16px;
     word-spacing: 4px;
 `
 
-const Button = styled.button `
+const Button = styled.button`
     font-size: 20px;
     border: none;
     outline: None;
@@ -56,16 +63,16 @@ export default function Slider() {
         <div>
             <Container>
                 <Wrapper>
-                    
-                        <ImgContainer>
-                            <Image src="https://cdn.shopify.com/s/files/1/0419/5939/1399/files/4qChoZT_2048x2048.jpg?v=1601115655"/>
-                        </ImgContainer>
-                        <InfoContainer>
-                            <Title>EVOLVING COLOURS</Title>
-                            <SubTitle>New Season Evade and Evolve</SubTitle>
-                            <Button>SHOP NOW</Button>
-                        </InfoContainer>
-                    
+
+                    <ImgContainer>
+                        <Image src="https://cdn.shopify.com/s/files/1/0419/5939/1399/files/4qChoZT_2048x2048.jpg?v=1601115655" />
+                    </ImgContainer>
+                    <InfoContainer>
+                        <Title>EVOLVING COLOURS</Title>
+                        <SubTitle>New Season Evade and Evolve</SubTitle>
+                        <Button>SHOP NOW</Button>
+                    </InfoContainer>
+
                 </Wrapper>
             </Container>
         </div>

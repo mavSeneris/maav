@@ -31,6 +31,7 @@ const Container = styled.div`
 const Image = styled.img`
     width: 100%;
     height: 400px;
+    min-height: 100px;
     object-fit: cover;
     ${'' /* z-index: 2; */}
 `

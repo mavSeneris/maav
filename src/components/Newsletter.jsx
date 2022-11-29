@@ -1,13 +1,15 @@
 import { Send } from '@material-ui/icons'
 import styled from 'styled-components'
+import { mobile } from '../../responsive'
+
 
 const Container = styled.div`
     height: max-content;
     display: flex;
-
+    ${mobile({flexDirection: "column-reverse"})}
 `
 const InputWrapper = styled.div`
-    width: 50%;
+    flex: 1;
     background-color: #e88a75;
     display: flex;
     flex-direction: column;
@@ -15,23 +17,30 @@ const InputWrapper = styled.div`
     justify-content: center;
     gap: 15px;
     color: white;
+    padding: 50px 0;
+    max-width: 500px;
 `
 const Title = styled.h2`
     font-size: 60px;
     font-weight: 700;
     letter-spacing: 5px;
+
+    ${mobile({fontSize: "30px"})}
 `
 const Desc = styled.div`
-    font-size: 24px;
+    width: auto;
+    font-size: 20px;
     font-weight: 300;
     margin-bottom: 20px;
+    text-align: center;
+
 `
 const InputContainer = styled.div`
     width: 50%;
     height: 40px;
     background-color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     border: 1px solid lightgray;
 `
 const Input = styled.input`
@@ -48,11 +57,12 @@ const Button = styled.button`
     color: white;
 `
 const ImageWrapper = styled.div`
-    width: 50%;
+    flex: 1;
 `
 const Image = styled.img`
     width: 100%;
     height: 100%;
+    object-fit: cover;
 `
 
 

@@ -1,9 +1,12 @@
 import styled from "styled-components"
+import {mobile} from "../../responsive"
 
 
 const Container = styled.div`
+    width: 100%;
+
     flex: 1;
-    height: 60vh;
+    height: 50vh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -28,7 +31,7 @@ const InfoContainer = styled.div`
 
 const Title = styled.h1`
     color: white;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 700;
     letter-spacing: 2px
 `

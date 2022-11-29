@@ -1,7 +1,8 @@
 import { Badge } from '@material-ui/core'
-import { ArrowBack, Clear, LocalMallOutlined, PersonOutlineOutlined, Search } from '@material-ui/icons'
+import { ArrowBack, Clear, LocalMallOutlined, NoEncryption, PersonOutlineOutlined, Search } from '@material-ui/icons'
 import styled from 'styled-components'
 import { useState } from 'react'
+import { mobile } from '../../responsive'
 
 
 const Container = styled.div`
@@ -13,6 +14,7 @@ const Container = styled.div`
     opacity: 0.97;
     box-shadow: 0 1px 10px rgba(160, 160, 160, 0.1);
 
+    
 `
 const Wrapper = styled.div`
     
@@ -26,6 +28,9 @@ const Wrapper = styled.div`
 //* NAVBAR LEFT:
 const Left = styled.div`
     flex: 1;
+    display: flex;
+    align-items: center;
+
 `
 const Category = styled.div`
     display: flex;
@@ -33,11 +38,50 @@ const Category = styled.div`
     align-items: center;
     gap:15px;
     font-size: 14px;
+    
+    ${mobile({ display: "none" })}
 `
 
 const CategoryLink = styled.a`
     cursor: pointer;
 `
+
+const MenuButton = styled.div`
+    width: 25px;
+    height: 20px;
+    ${'' /* border: 1px solid red; */}
+
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+
+    ${mobile({ display: "flex" })}
+
+`
+const Line1 = styled.div`
+    border: 0.3px solid black;
+`
+const Line2 = styled.div`
+    border: 0.3px solid black;
+`
+const Line3 = styled.div`
+    border: 0.3px solid black;
+`
+
+// will show only on mobile screen
+const ButtonSearchLeft = styled.button`
+    display: none;
+    background-color: transparent;
+    border:none;
+    outline: none;
+    cursor: pointer;
+    margin-left: 15px;
+
+    ${mobile({ display: "block" })}
+
+`
+
 //* END
 
 //* NAVBAR CENTER: Logo
@@ -63,6 +107,9 @@ const Right = styled.div`
 const Language = styled.span`
     font-size: 14px;
     cursor: pointer;
+
+    ${mobile({ display: "none" })}
+
 `
 
 const ButtonSearch = styled.button`
@@ -70,6 +117,9 @@ const ButtonSearch = styled.button`
     border:none;
     outline: none;
     cursor: pointer;
+
+    ${mobile({ display: "none" })}
+
 `
 
 const MenuItem = styled.div`
@@ -119,7 +169,7 @@ const ButtonContainer = styled.button`
 
 const LoginWrapper = styled.div`
     width: 400px;
-    height: 100vh;
+/////    height: 100vh;
     padding: 20px;
     background-color: white;
     position: absolute;
@@ -348,10 +398,23 @@ export default function Navbar() {
                         <CategoryLink>Accesories</CategoryLink>
                         <CategoryLink>Stories</CategoryLink>
                     </Category>
+
+                    <MenuButton>
+                        <Line1></Line1>
+                        <Line2></Line2>
+                        <Line3></Line3>
+                    </MenuButton>
+
+                    <ButtonSearchLeft onClick={toggleSearch}>
+                        {!showSearch && <Search />}
+                        {showSearch && <Clear />}
+                    </ButtonSearchLeft>
                 </Left>
+
                 <Center>
                     <Logo>MAAV</Logo>
                 </Center>
+
                 <Right>
                     <MenuItem>
                         <Language>EN</Language>
@@ -381,14 +444,14 @@ export default function Navbar() {
                 </ButtonContainer>
             </InputWrapper>}
 
-            ${'' /* {showLogin && !showSearch && <LoginWrapper>
+            {showLogin && !showSearch && <LoginWrapper>
                 <Title>MAAV Profile</Title>
                 <Desc>Build your unique profile for faster checkout, see full order history, save riding preferences and get access to special offers, before the rest of the pack.</Desc>
                 <LoginFlexContainer>
                     <Email placeholder='email@example.com' />
                     <Button>Get Started</Button>
                 </LoginFlexContainer>
-            </LoginWrapper>}  */}
+            </LoginWrapper>}
 
             {showLogin && !showSearch && <LoginWrapper>
                 <ArrowBack fontSize='large' cursor="pointer" />
@@ -408,23 +471,23 @@ export default function Navbar() {
                 </Form>
             </LoginWrapper>}
 
-            ${'' /* {showLogin && !showSearch && <LoginWrapper>
-                <ArrowBack fontSize='large' cursor="pointer"/>
+            {showLogin && !showSearch && <LoginWrapper>
+                <ArrowBack fontSize='large' cursor="pointer" />
                 <Header>Please login</Header>
                 <EmailLogin>Email: email@example.com</EmailLogin>
                 <FormLogin>
                     <Label>Password</Label>
                     <InputLogin placeholder='Password' />
-                    
+
                     <ButtonLogin>Login</ButtonLogin>
                 </FormLogin>
-            </LoginWrapper>} */}
+            </LoginWrapper>}
 
 
-            ${'' /* {showBag && !showSearch && <ShoppingBagWrapper>
+            {showBag && !showSearch && <ShoppingBagWrapper>
                 <Title>Shopping Bag (0 items)</Title>
                 <Desc>Your Cart is currently empty.</Desc>
-            </ShoppingBagWrapper>} */}
+            </ShoppingBagWrapper>}
 
             {showBag && !showSearch && <ShoppingBagWrapper>
                 <Title>Shopping Bag (4 items)</Title>

@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Mail, Twitter } from '@material-ui/icons'
 import React from 'react'
 import styled from 'styled-components'
+import { mobile } from '../../responsive'
 
 const Container = styled.div`
     padding: 100px;
@@ -9,6 +10,11 @@ const Container = styled.div`
     background-color: #141f39;
     flex-wrap: no-wrap;
     height: 100%;
+
+    ${mobile({
+        flexDirection: "column",
+        gap: "30px;"
+    })}
 `
 
 const Wrapper = styled.div`
@@ -42,12 +48,13 @@ const Logo = styled.h1`
     width: 50%;
     justify-self: flex-end;
     font-size: 100px;
-    ${'' /* margin-left: 20%; */}
     color: white;
     font-weight: 700;
     letter-spacing: 20px;
     font-style: italic;
-    text-align: right;    
+    text-align: right;
+
+    ${mobile({fontSize: "50px"})}    
 `
 
 
