@@ -13,9 +13,9 @@ const Wrapper = styled.div`
     display: flex;
 
     ${mobile({
-        flexDirection: "column",
-        alignItems: "center"
-    })}
+    flexDirection: "column",
+    alignItems: "center"
+})}
 `
 const ImgContainer = styled.div`
     flex: 2;
@@ -46,7 +46,7 @@ const InfoWrapper = styled.div`
     max-width: 600px;
     margin-bottom: 40px;
 
-    ${mobile({padding: "10px 40px"})}
+    ${mobile({ padding: "10px 40px" })}
 
 `
 const Title = styled.h2`

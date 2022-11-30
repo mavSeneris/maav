@@ -1,7 +1,7 @@
 import { Badge } from '@material-ui/core'
 import { ArrowBack, Clear, LocalMallOutlined, NoEncryption, PersonOutlineOutlined, Search } from '@material-ui/icons'
 import styled from 'styled-components'
-import { useState } from 'react'
+import { useState, useSyncExternalStore } from 'react'
 import { mobile } from '../../responsive'
 
 
@@ -13,6 +13,7 @@ const Container = styled.div`
     background-color: white;
     opacity: 0.97;
     box-shadow: 0 1px 10px rgba(160, 160, 160, 0.1);
+    
 
     
 `
@@ -103,6 +104,7 @@ const Right = styled.div`
     flex: 1;
     display: flex;
     justify-content: flex-end;   
+    
 `
 const Language = styled.span`
     font-size: 14px;
@@ -164,17 +166,20 @@ const ButtonContainer = styled.button`
     border: none;
     outline: none;
     cursor: pointer;
+    
 `
 //* END
 
 const LoginWrapper = styled.div`
     width: 400px;
-/////    height: 100vh;
+    height: 95.6vh;
     padding: 20px;
     background-color: white;
     position: absolute;
     right: 0px;
-    transition: 0.5s;
+    transition: .2s ease-out;
+    
+    ${mobile({ width: "100vw" })}
 `
 
 const Title = styled.h3`
@@ -219,10 +224,13 @@ const Button = styled.button`
 `
 const ShoppingBagWrapper = styled.div`
     width: 400px;
-    height: 100vh;
+    height: 95.6vh;
     background-color: white;
     position: absolute;
     right: 0px;
+
+    ${mobile({ width: "100vw" })}
+    
 `
 
 
@@ -354,6 +362,7 @@ export default function Navbar() {
     const [searchValue, setSearchValue] = useState("")
     const [showLogin, setShowLogin] = useState(false)
     const [showBag, setShowBag] = useState(false)
+    const [bagItems, setBagItems] = useState([1, 2])
 
     function toggleSearch() {
         setShowSearch(prevShow => !prevShow)
@@ -423,7 +432,7 @@ export default function Navbar() {
                             {showSearch && <Clear />}
                         </ButtonSearch>
                         <PersonOutlineOutlined onClick={toggleLogin} />
-                        <Badge overlap="rectangular" badgeContent={4} color="primary">
+                        <Badge overlap="rectangular" badgeContent={bagItems.length} color="primary">
                             <LocalMallOutlined onClick={toggleBag} />
                         </Badge>
                     </MenuItem>
@@ -485,85 +494,88 @@ export default function Navbar() {
 
 
             {showBag && !showSearch && <ShoppingBagWrapper>
-                <Title>Shopping Bag (0 items)</Title>
-                <Desc>Your Cart is currently empty.</Desc>
+                {bagItems.length < 1 && <>
+                    <Title>Shopping Bag (0 item)</Title>
+                    <Desc>Your Cart is currently empty.</Desc>
+                </>}
+                {bagItems.length > 0 && <>
+                    <Title>Shopping Bag ({bagItems.length} {bagItems.length > 1 ? "items" : "item"})</Title>
+                    <Bag>
+                        <ProductImage src="https://maap.cc/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0510%2F7809%2Fproducts%2FMAP-MAJ334_LAVA_EvadeProBaseJersey_Lava_PDP_SPECS_03_DESKTOP.jpg%3Fv%3D1668029203&w=1920&q=100" />
+                        <ProductInfo>
+                            <ProductName>Shift Pro Base Jersey</ProductName>
+                            <ProductSize>Size Extra Small</ProductSize>
+                            <ProductColour>Colour Spruce</ProductColour>
+                            <AddContainer>
+                                <AmountContainer>
+                                    <AmountButton>+</AmountButton>
+                                    <Amount>1</Amount>
+                                    <AmountButton>-</AmountButton>
+                                </AmountContainer>
+                                <ProductAmountPrice>$115.00</ProductAmountPrice>
+                            </AddContainer>
+                            <ViewProduct>View Product</ViewProduct>
+                            <Remove>Remove</Remove>
+                        </ProductInfo>
+                    </Bag>
+                    <Bag>
+                        <ProductImage src="https://maap.cc/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0510%2F7809%2Fproducts%2FShiftProBaseJersey_Spruce_PDP_SPECS_03_DESKTOP.jpg%3Fv%3D1660192789&w=1920&q=100" />
+                        <ProductInfo>
+                            <ProductName>Shift Pro Base Jersey</ProductName>
+                            <ProductSize>Size Extra Small</ProductSize>
+                            <ProductColour>Colour Spruce</ProductColour>
+                            <AddContainer>
+                                <AmountContainer>
+                                    <AmountButton>+</AmountButton>
+                                    <Amount>1</Amount>
+                                    <AmountButton>-</AmountButton>
+                                </AmountContainer>
+                                <ProductAmountPrice>$115.00</ProductAmountPrice>
+                            </AddContainer>
+                            <ViewProduct>View Product</ViewProduct>
+                            <Remove>Remove</Remove>
+                        </ProductInfo>
+                    </Bag>
+                    <Bag>
+                        <ProductImage src="https://maap.cc/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0510%2F7809%2Fproducts%2FMAP-MAB148_STK_ProBib2.0_Shitaki_PDP_SPECS_03_DESKTOP.jpg%3Fv%3D1668029203&w=1920&q=100" />
+                        <ProductInfo>
+                            <ProductName>Shift Pro Base Jersey</ProductName>
+                            <ProductSize>Size Extra Small</ProductSize>
+                            <ProductColour>Colour Spruce</ProductColour>
+                            <AddContainer>
+                                <AmountContainer>
+                                    <AmountButton>+</AmountButton>
+                                    <Amount>1</Amount>
+                                    <AmountButton>-</AmountButton>
+                                </AmountContainer>
+                                <ProductAmountPrice>$115.00</ProductAmountPrice>
+                            </AddContainer>
+                            <ViewProduct>View Product</ViewProduct>
+                            <Remove>Remove</Remove>
+                        </ProductInfo>
+                    </Bag>
+                    <Bag>
+                        <ProductImage src="https://maap.cc/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0510%2F7809%2Fproducts%2FMAP-MAA097_CLROLV_TrainingBottle_ClearOlive_PDP_HERO_01_DESKTOP.jpg%3Fv%3D1667427496&w=1920&q=100" />
+                        <ProductInfo>
+                            <ProductName>Shift Pro Base Jersey</ProductName>
+                            <ProductSize>Size Extra Small</ProductSize>
+                            <ProductColour>Colour Spruce</ProductColour>
+                            <AddContainer>
+                                <AmountContainer>
+                                    <AmountButton>+</AmountButton>
+                                    <Amount>1</Amount>
+                                    <AmountButton>-</AmountButton>
+                                </AmountContainer>
+                                <ProductAmountPrice>$115.00</ProductAmountPrice>
+                            </AddContainer>
+                            <ViewProduct>View Product</ViewProduct>
+                            <Remove>Remove</Remove>
+                        </ProductInfo>
+                    </Bag>
+                </>}
             </ShoppingBagWrapper>}
 
-            {showBag && !showSearch && <ShoppingBagWrapper>
-                <Title>Shopping Bag (4 items)</Title>
-                <Bag>
-                    <ProductImage src="https://maap.cc/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0510%2F7809%2Fproducts%2FMAP-MAJ334_LAVA_EvadeProBaseJersey_Lava_PDP_SPECS_03_DESKTOP.jpg%3Fv%3D1668029203&w=1920&q=100" />
-                    <ProductInfo>
-                        <ProductName>Shift Pro Base Jersey</ProductName>
-                        <ProductSize>Size Extra Small</ProductSize>
-                        <ProductColour>Colour Spruce</ProductColour>
-                        <AddContainer>
-                            <AmountContainer>
-                                <AmountButton>+</AmountButton>
-                                <Amount>1</Amount>
-                                <AmountButton>-</AmountButton>
-                            </AmountContainer>
-                            <ProductAmountPrice>$115.00</ProductAmountPrice>
-                        </AddContainer>
-                        <ViewProduct>View Product</ViewProduct>
-                        <Remove>Remove</Remove>
-                    </ProductInfo>
-                </Bag>
-                <Bag>
-                    <ProductImage src="https://maap.cc/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0510%2F7809%2Fproducts%2FShiftProBaseJersey_Spruce_PDP_SPECS_03_DESKTOP.jpg%3Fv%3D1660192789&w=1920&q=100" />
-                    <ProductInfo>
-                        <ProductName>Shift Pro Base Jersey</ProductName>
-                        <ProductSize>Size Extra Small</ProductSize>
-                        <ProductColour>Colour Spruce</ProductColour>
-                        <AddContainer>
-                            <AmountContainer>
-                                <AmountButton>+</AmountButton>
-                                <Amount>1</Amount>
-                                <AmountButton>-</AmountButton>
-                            </AmountContainer>
-                            <ProductAmountPrice>$115.00</ProductAmountPrice>
-                        </AddContainer>
-                        <ViewProduct>View Product</ViewProduct>
-                        <Remove>Remove</Remove>
-                    </ProductInfo>
-                </Bag>
-                <Bag>
-                    <ProductImage src="https://maap.cc/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0510%2F7809%2Fproducts%2FMAP-MAB148_STK_ProBib2.0_Shitaki_PDP_SPECS_03_DESKTOP.jpg%3Fv%3D1668029203&w=1920&q=100" />
-                    <ProductInfo>
-                        <ProductName>Shift Pro Base Jersey</ProductName>
-                        <ProductSize>Size Extra Small</ProductSize>
-                        <ProductColour>Colour Spruce</ProductColour>
-                        <AddContainer>
-                            <AmountContainer>
-                                <AmountButton>+</AmountButton>
-                                <Amount>1</Amount>
-                                <AmountButton>-</AmountButton>
-                            </AmountContainer>
-                            <ProductAmountPrice>$115.00</ProductAmountPrice>
-                        </AddContainer>
-                        <ViewProduct>View Product</ViewProduct>
-                        <Remove>Remove</Remove>
-                    </ProductInfo>
-                </Bag>
-                <Bag>
-                    <ProductImage src="https://maap.cc/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0510%2F7809%2Fproducts%2FMAP-MAA097_CLROLV_TrainingBottle_ClearOlive_PDP_HERO_01_DESKTOP.jpg%3Fv%3D1667427496&w=1920&q=100" />
-                    <ProductInfo>
-                        <ProductName>Shift Pro Base Jersey</ProductName>
-                        <ProductSize>Size Extra Small</ProductSize>
-                        <ProductColour>Colour Spruce</ProductColour>
-                        <AddContainer>
-                            <AmountContainer>
-                                <AmountButton>+</AmountButton>
-                                <Amount>1</Amount>
-                                <AmountButton>-</AmountButton>
-                            </AmountContainer>
-                            <ProductAmountPrice>$115.00</ProductAmountPrice>
-                        </AddContainer>
-                        <ViewProduct>View Product</ViewProduct>
-                        <Remove>Remove</Remove>
-                    </ProductInfo>
-                </Bag>
-            </ShoppingBagWrapper>}
+
         </Container>
     )
 }
