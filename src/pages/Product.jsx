@@ -2,6 +2,7 @@ import styled from "styled-components"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import Announcements from "../components/Announcements"
+import { mobile } from "../../responsive"
 
 
 const Container = styled.div`
@@ -10,15 +11,21 @@ const Container = styled.div`
 const Wrapper = styled.div`
     margin-top: 20px;
     display: flex;
+
+    ${mobile({
+        flexDirection: "column",
+        alignItems: "center"
+    })}
 `
 const ImgContainer = styled.div`
-    flex: 2; 
+    flex: 2;
+    
 `
 const Image = styled.img`
     width: 100%;
-    min-height: 1000px;
-    object-fit: contain;
-    max-width: 70vw;
+    min-height: 400px;
+    object-fit: cover;
+    max-width: 100vw;
 
 `
 const InfoContainer = styled.div`
@@ -38,6 +45,8 @@ const InfoWrapper = styled.div`
     min-height: 1000px;
     max-width: 600px;
     margin-bottom: 40px;
+
+    ${mobile({padding: "10px 40px"})}
 
 `
 const Title = styled.h2`
