@@ -14,9 +14,9 @@ const Container = styled.div`
     height: 100%;
 
     ${mobile({
-        gridTemplateColumns: "repeat(1, 1fr)",
-        gap: "30px"
-    })}
+    gridTemplateColumns: "repeat(1, 1fr)",
+    gap: "30px"
+})}
 `
 
 const Wrapper = styled.div`
@@ -57,7 +57,7 @@ const Logo = styled.h1`
     ${'' /* text-align: right; */}
 
     @media only screen and (max-width: 1050px){
-            ${{gridColumn: "2 / 1", fontSize: "40px"}}
+            ${{ gridColumn: "2 / 1", fontSize: "40px" }}
         }
       
 `
