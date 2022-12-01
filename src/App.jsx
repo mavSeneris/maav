@@ -2,16 +2,25 @@ import Home from './pages/Home'
 import Product from './pages/Product'
 import ProductList from './pages/ProductList'
 
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+} from "react-router-dom";
+
 
 
 function App() {
 
   return (
-    <div className="App">
-      {/* <Home /> */}
-      <ProductList/>
-      {/* <Product/> */}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element = {<Home />}/>
+        <Route path="/product" element = {<Product />}/>
+        <Route path="/product-list" element = {<ProductList />}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
