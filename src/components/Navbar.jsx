@@ -287,6 +287,9 @@ const ButtonLogin = styled.button`
 }
 `
 
+const ArrowIcon = styled.div`
+`
+
 const FormLogin = styled.form`
     padding: 10px 20px 0 20px;
     display: flex;
@@ -370,7 +373,7 @@ export default function Navbar() {
             email: "",
             firstName: "",
             lastName: "",
-            password: "4040811"
+            password: "asdfasdfasd"
         }
     )
 
@@ -391,6 +394,10 @@ export default function Navbar() {
         else if (!userData.password) {
             setRegister(true)
         }
+    }
+
+    function returnToLogin() {
+        setRegister(false)
     }
 
 
@@ -484,20 +491,25 @@ export default function Navbar() {
             </InputWrapper>}
 
             {showLogin && !showSearch && <LoginWrapper>
-                <Title>MAAV Profile</Title>
-                <Desc>Build your unique profile for faster checkout, see full order history, save riding preferences and get access to special offers, before the rest of the pack.</Desc>
-                <LoginFlexContainer>
-                    <Email
-                        placeholder='email@example.com'
-                        type="email"
-                        onChange={login}
-                        name="email"
-                    />
-                    <Button onClick={checkAccount}>Get Started</Button>
-                </LoginFlexContainer>
+                {!register && !showLoginForm && <>
+                    <Title>MAAV Profile</Title>
+                    <Desc>Build your unique profile for faster checkout, see full order history, save riding preferences and get access to special offers, before the rest of the pack.</Desc>
+                    <LoginFlexContainer>
+                        <Email
+                            placeholder='email@example.com'
+                            type="email"
+                            onChange={login}
+                            name="email"
+                        />
+                        <Button onClick={checkAccount}>Get Started</Button>
+                    </LoginFlexContainer>
+                </>}
+
 
                 {register && <>
-                    <ArrowBack fontSize='large' cursor="pointer" />
+                    <ArrowIcon onClick={returnToLogin}>
+                        <ArrowBack fontSize='large' cursor="pointer" />
+                    </ArrowIcon>
                     <Header>One Last Step!</Header>
                     <SubTitle>Sit tight - just two minutes until your account is ready to go</SubTitle>
                     <Form>
@@ -519,7 +531,9 @@ export default function Navbar() {
 
 
                 {showLoginForm && <>
-                    <ArrowBack fontSize='large' cursor="pointer" />
+                    <ArrowIcon onClick={returnToLogin}>
+                        <ArrowBack fontSize='large' cursor="pointer" />
+                    </ArrowIcon>
                     <Header>Please login</Header>
                     <EmailLogin>Email: {userData.email}</EmailLogin>
                     <FormLogin>
