@@ -11,14 +11,15 @@ import {
 
 
 
+
 function App() {
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element = {<Home />}/>
-        <Route path="/product" element = {<Product />}/>
-        <Route path="/product-list" element = {<ProductList />}/>
+        <Route path="/product-list/:category" element = {<ProductList />}/>
+        <Route path="/product/:id" element = {<Product />}/>
       </Routes>
     </BrowserRouter>
   )

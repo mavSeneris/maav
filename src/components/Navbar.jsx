@@ -1,5 +1,5 @@
 import { Badge } from '@material-ui/core'
-import { ArrowBack, Clear, LocalMallOutlined, NoEncryption, PersonOutlineOutlined, Search } from '@material-ui/icons'
+import { ArrowBack, Clear, ContactlessOutlined, LocalMallOutlined, NoEncryption, PersonOutlineOutlined, Search } from '@material-ui/icons'
 import styled from 'styled-components'
 import { useState, useSyncExternalStore } from 'react'
 import { mobile } from '../../responsive'
@@ -363,6 +363,36 @@ export default function Navbar() {
     const [showLogin, setShowLogin] = useState(false)
     const [showBag, setShowBag] = useState(false)
     const [bagItems, setBagItems] = useState([1, 2])
+    const [showLoginForm, setShowLoginForm] = useState(false)
+    const [register, setRegister] = useState(false)
+    const [userData, setUserData] = useState(
+        {
+            email: "",
+            firstName: "",
+            lastName: "",
+            password: "4040811"
+        }
+    )
+
+
+    function login(e) {
+        const email = e.target.value
+        setUserData(prevUserdata => {
+            return { ...prevUserdata, email: email }
+        })
+    }
+
+    console.log(userData)
+
+    function checkAccount() {
+        if (userData.password) {
+            setShowLoginForm(true)
+        }
+        else if (!userData.password) {
+            setRegister(true)
+        }
+    }
+
 
     function toggleSearch() {
         setShowSearch(prevShow => !prevShow)
@@ -457,40 +487,61 @@ export default function Navbar() {
                 <Title>MAAV Profile</Title>
                 <Desc>Build your unique profile for faster checkout, see full order history, save riding preferences and get access to special offers, before the rest of the pack.</Desc>
                 <LoginFlexContainer>
-                    <Email placeholder='email@example.com' />
-                    <Button>Get Started</Button>
+                    <Email
+                        placeholder='email@example.com'
+                        type="email"
+                        onChange={login}
+                        name="email"
+                    />
+                    <Button onClick={checkAccount}>Get Started</Button>
                 </LoginFlexContainer>
+
+                {register && <>
+                    <ArrowBack fontSize='large' cursor="pointer" />
+                    <Header>One Last Step!</Header>
+                    <SubTitle>Sit tight - just two minutes until your account is ready to go</SubTitle>
+                    <Form>
+                        <Label>Email</Label>
+                        <InputLogin
+                            placeholder='email@example.com'
+                            value={userData.email}
+                        />
+                        <Label>First Name</Label>
+                        <InputLogin placeholder='First Name' />
+                        <Label>Last Name</Label>
+                        <InputLogin placeholder='Last Name' />
+                        <Agreement>
+                            By registering, I agree to the MAAV Terms & Conditions and Privacy Policy
+                        </Agreement>
+                        <ButtonLogin>Creat Profile</ButtonLogin>
+                    </Form>
+                </>}
+
+
+                {showLoginForm && <>
+                    <ArrowBack fontSize='large' cursor="pointer" />
+                    <Header>Please login</Header>
+                    <EmailLogin>Email: {userData.email}</EmailLogin>
+                    <FormLogin>
+                        <Label>Password</Label>
+                        <InputLogin placeholder='Password' />
+
+                        <ButtonLogin>Login</ButtonLogin>
+                    </FormLogin>
+                </>}
+
+
+
+
+            </LoginWrapper>}
+
+            {/* {showLogin && !showSearch && <LoginWrapper>
+                
             </LoginWrapper>}
 
             {showLogin && !showSearch && <LoginWrapper>
-                <ArrowBack fontSize='large' cursor="pointer" />
-                <Header>One Last Step!</Header>
-                <SubTitle>Sit tight - just two minutes until your account is ready to go</SubTitle>
-                <Form>
-                    <Label>Email</Label>
-                    <InputLogin placeholder='email@example.com' />
-                    <Label>First Name</Label>
-                    <InputLogin placeholder='First Name' />
-                    <Label>Last Name</Label>
-                    <InputLogin placeholder='Last Name' />
-                    <Agreement>
-                        By registering, I agree to the MAAV Terms & Conditions and Privacy Policy
-                    </Agreement>
-                    <ButtonLogin>Creat Profile</ButtonLogin>
-                </Form>
-            </LoginWrapper>}
-
-            {showLogin && !showSearch && <LoginWrapper>
-                <ArrowBack fontSize='large' cursor="pointer" />
-                <Header>Please login</Header>
-                <EmailLogin>Email: email@example.com</EmailLogin>
-                <FormLogin>
-                    <Label>Password</Label>
-                    <InputLogin placeholder='Password' />
-
-                    <ButtonLogin>Login</ButtonLogin>
-                </FormLogin>
-            </LoginWrapper>}
+                
+            </LoginWrapper>} */}
 
 
             {showBag && !showSearch && <ShoppingBagWrapper>
