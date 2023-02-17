@@ -9,16 +9,18 @@ import Footer from '../components/Footer'
 
 
 
-export default function Home() {
+export default function Home() { 
+
+
   return (
     <div>
       <Announcements />
       <Navbar />
       <Slider />
-      <Categories/>
+      <Categories />
       <Product />
       <Newsletter />
-      <Footer/>
+      <Footer />
     </div>
   )
 }

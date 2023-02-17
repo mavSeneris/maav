@@ -385,7 +385,7 @@ export default function Navbar() {
         })
     }
 
-    console.log(userData)
+    
 
     function checkAccount() {
         if (userData.password) {

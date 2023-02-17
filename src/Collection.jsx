@@ -49,8 +49,7 @@ export default function Collection({ item }) {
             <Container>
                 <CollectionContainer>
                     <ImageWrapper>
-                        <Image src={item.img1}
-                        />
+                        <Image src={item.img1} />
                         <ImageHover src={item.img2} />
                     </ImageWrapper>
                     <InfoWrapper>

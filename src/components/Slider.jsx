@@ -59,6 +59,8 @@ const Button = styled.button`
 `
 
 export default function Slider() {
+
+
     return (
         <div>
             <Container>

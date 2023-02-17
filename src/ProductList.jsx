@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import Collections from "../components/Collections"
+import { useLocation } from "react-router-dom"
 
 const Container = styled.div`
     height: 100%;
@@ -14,6 +15,7 @@ const FilterContainer = styled.div`
     gap: 30px;
     background-color: white;
 `
+
 const Filter = styled.div`
 `
 
@@ -33,6 +35,9 @@ const Option = styled.option`
 `
 
 export default function ProductList() {
+    const location = useLocation()
+    console.log(location)
+
     return (
         <Container>
             <Announcement />
@@ -70,7 +75,7 @@ export default function ProductList() {
                     </Select>
                 </Filter>
             </FilterContainer>
-            <Collections/>
+            <Collections />
             <Footer />
         </Container>
     )
